@@ -5,6 +5,7 @@ namespace ZFMLL\ModuleManager\Listener;
 use ZFMLL\ModuleManager\ModuleEvent;
 use Zend\ModuleManager\Listener\DefaultListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
+use Zend\EventManager\EventCollection;
 
 class AuthListenerAggregate extends DefaultListenerAggregate
 {

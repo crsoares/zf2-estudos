@@ -28,4 +28,20 @@ class ListenerManager extends AbstractPluginManager
 		'ip' => 'remoteaddr',
 		'http_user_agent' => 'user_agent'
 	);
+
+	public function get($name, $userPeeringServiceManagers = true)
+	{
+		$plugin = parent::get($name, $userPeeringServiceManagers);
+		return $plugin;
+	}
+
+	public function validatePlugin($plugin)
+	{
+		if ($plugin instanceOf AuthorizeHandlerInterface) {
+			return;
+		}
+		throw new InvalidListenerException(
+			'Ouvintes Auth deve implementar AuthorizeHandlerInterface'
+		);
+	}
 }

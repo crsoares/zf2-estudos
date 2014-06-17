@@ -23,4 +23,35 @@ class ModuleManager extends BaseModuleManager
 		}
 		$this->setModules($modules);
 	}
+
+	public function loadModuleAuth($moduleName)
+	{
+		$event = $this->getEvent();
+		$event->setModuleName($moduleName);
+
+		$result = $this->getEventManager()->trigger(ModuleEvent::EVENT_LOAD_MODULE_AUTH, $this, $event, function ($r) {
+			return !$r;
+		}); 
+
+		if(!$result->last()) {
+			return false;
+		}
+
+		return true;
+	}
+
+	protected function attachDefaultListeners()
+	{
+		$events = $this->getEventManager();
+		$events->attach(ModuleEvent::EVENT_LOAD_MODULES_AUTH, array($this, 'onLoadModulesAuth'));
+		parent::attachDefaultListeners();
+	}
+
+	public function getEvent()
+	{
+		if (!$this->event instanceOf ModuleEvent) {
+			$this->setEvent(new ModuleEvent);
+		}
+		return $this->event;
+	}
 }
