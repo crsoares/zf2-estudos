@@ -1,0 +1,21 @@
+<?php if($lastPageInRange > $firstPageInRange) : ?>
+    <div class="pagination">
+        <ul>
+          <?php if(isset($previous)) : ?>
+            <li><a href="<?php echo $url ?>?page=<?php echo $previous; ?>">«</a></li>
+          <?php endif; ?>
+          <?php if($firstPageInRange > 1) : ?>
+            <li class="disabled"><a href="#">...</a></li>
+          <?php endif; ?>
+          <?php for($page = $firstPageInRange; $page <= $lastPageInRange; $page++) : ?>
+            <li <?php if($page == $current) echo 'class="active"'; ?>><a href="<?php echo $url ?>?page=<?php echo $page; ?>"><?php echo $page; ?></a></li>
+          <?php endfor; ?>
+          <?php if($lastPageInRange < $pageCount) : ?>
+            <li class="disabled"><a href="#">...</a></li>
+          <?php endif; ?>
+          <?php if(isset($next)) : ?>
+              <li><a href="<?php echo $url ?>?page=<?php echo $next; ?>">»</a></li>
+          <?php endif; ?>
+        </ul>
+    </div>
+<?php endif; ?>

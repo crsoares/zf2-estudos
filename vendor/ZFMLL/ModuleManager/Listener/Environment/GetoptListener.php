@@ -1,39 +1,60 @@
 <?php
 
-use ZFMLL\ModuleManager\Listener\Environment;
+/*
+ * This file is part of the ZFMLL package.
+ * @copyright Copyright (c) 2012 Blanchon Vincent - France (http://developpeur-zend-framework.fr - blanchon.vincent@gmail.com)
+ */
 
-use ZFML\ModuleManager\Listener\AbstractListener;
-use ZFML\ModuleManager\Listener\EnvironmentHandler;
+namespace ZFMLL\ModuleManager\Listener\Environment;
+
+use ZFMLL\ModuleManager\Listener\AbstractListener;
+use ZFMLL\ModuleManager\Listener\EnvironmentHandler;
 use Zend\Console\Getopt;
 
 class GetoptListener extends AbstractListener
 {
-	protected $getopt;
+    /**
+     * @var Getopt 
+     */
+    protected $getopt;
+    
+    /**
+     * get return of parse
+     * @var type 
+     */
+    protected $isBad = false;
 
-	protected $isBad = false;
-
-	public function authorizeModule($moduleName)
-	{
-		if (strtolower(ini_get('register_argc_argv')) != 'on' && ini_get('register_argc_argv') != 1) {
-			return false;
-		}
-
-		$numOpt = 0;
-		foreach($this->config as $config => $comment) {
-			if (preg_match('#^[^=]+=#', $config)) {
-				$numOpt++;
-			}
-		}
-
-		return count($this->getGetopt()->getOptions()) >= $numOpt;
-	}
-
-	public function getGetopt()
-	{
-		if (!$this->getopt) {
-			$this->getopt = @new Getopt($this->config, null, array(Getopt::CONFIG_FREEFORM_FLAGS => true));
-			$this->getopt->parse();
-		}
-		return $this->getopt;
-	}
+    /**
+     *
+     * @param string $module
+     * @return boolean 
+     */
+    public function authorizeModule($moduleName)
+    {
+    	if(strtolower(ini_get('register_argc_argv'))!='on' && ini_get('register_argc_argv')!='1') {
+            return false;
+    	}
+        
+        $numOpt = 0;
+        foreach($this->config as $config => $comment) {
+            if(preg_match('#^[^=]+=#', $config)) {
+                $numOpt++;    
+            }
+        }
+        
+        return count($this->getGetopt()->getOptions()) >= $numOpt; // let use of more argument
+    }
+    
+    /**
+     * Get argument on command line
+     * @return Getopt 
+     */
+    public function getGetopt()
+    {
+        if(!$this->getopt) {
+            $this->getopt = @new Getopt($this->config, null, array(Getopt::CONFIG_FREEFORM_FLAGS => true)); // let use of more argument
+            $this->getopt->parse();
+        }
+        return $this->getopt;
+    }
 }

@@ -1,0 +1,86 @@
+<?php 
+$this->headTitle()->setSeparator(' - ')
+                  ->setAutoEscape(false);
+
+$basePath = $this->basePath();
+$this->headLink()->appendStylesheet($basePath . '/css/bootstrap.min.css')
+                 ->appendStylesheet($basePath . '/css/style.css')
+                 ->appendStylesheet($basePath . '/css/bootstrap-responsive.min.css');
+
+$this->headLink(array(
+            'rel'  => 'shortcut icon',
+            'type' => 'image/vnd.microsoft.icon',
+            'href' => $basePath . '/img/favicon.ico',
+        ));
+
+$this->headScript()->appendFile($basePath . '/js/html5.js', 'text/javascript', 
+    array('conditional' => 'lt IE9',));
+
+echo $this->doctype();
+?>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('Zend Framework 2 : actualité, tutoriel, développeurs, webinars') ?>
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+    <?php echo $this->headLink() ?>
+    <?php echo $this->headScript() ?>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <?php
+                //echo $this->navigation()->menu()->setUlClass('nav')->render();
+              ?>
+              <li class="active"><a href="<?php echo $this->url('home') ?>">Home</a></li>
+              <li class=""><a href="<?php echo $this->url('tutoriel') ?>">Tutoriel ZF2</a></li>
+              <li class=""><a href="<?php echo $this->url('tweet') ?>">Tweet ZF2</a></li>
+              <li class=""><a href="<?php echo $this->url('social') ?>">ZF2 sur les réseaux</a></li>
+              <li class=""><a href="<?php echo $this->url('book') ?>">Livre sur ZF2</a></li>
+              <li class=""><a href="<?php echo $this->url('developer') ?>">Développeurs ZF2</a></li>
+              <li class=""><a href="<?php echo $this->url('contact') ?>">Contact</a></li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hero-unit">
+        <p>
+            <strong>Bienvenue sur l'agrégateur de contenu dédié au Zend Framework 2</strong>. Ce blog de news est construit avec la version <?php echo \Zend\Version\Version::VERSION; ?> du Zend Framework 2.
+            Le code source est <a href="https://github.com/blanchonvincent/ZF2-Aggregator" target="_blank">disponible sur Github</a> et tiré du livre "<a href="#">Au coeur de Zend Framework 2</a>".
+        </p>
+        <p><a class="btn btn-success btn-large" href="http://au-coeur-de-zend-framework-2.fr/">Voir le livre »</a></p>
+      </div>
+        <?php
+            echo $this->navigation()->breadcrumbs('DefaultNavigation')->setMinDepth(0)->setLinkLast(true)->setPartial('bloc/breadcrumbs')->render();
+        ?>
+      <?php echo $this->content; ?>
+
+      <hr>
+
+      <footer>
+        <p style="font-size: 0.8em;">
+            <a href="http://modules.zendframework.com" target="_blank">Modules Zend Framework 2</a> - 
+            <a href="http://au-coeur-de-zend-framework-2.fr" target="_blank">Livre "Au coeur de Zend Framework 2"</a> - 
+            <a href="http://developpeur-zend-framework.fr" target="_blank">Développeur Zend Framework 2</a> - 
+            <a href="https://github.com/blanchonvincent" target="_blank">Composants PHP & ZF2</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

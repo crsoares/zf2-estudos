@@ -7,17 +7,17 @@ use Zend\Form\Element\Text;
 
 class Name extends Text implements InputProviderInterface
 {
-	protected $label = 'Nome: ';
-
-	public function getInputSpecification()
-	{
-		return array(
-			'name' => $this->getName(),
-			'required' => true,
-			'filters' => array(
-				array('name' => 'StringTrim'),
-				array('name' => 'StripTags')
-			)
-		);
-	}
+    protected $label = 'Nom :';
+    
+    public function getInputSpecification()
+    {
+        return array(
+            'name' => $this->getName(),
+            'required' => true,
+            'filters' => array(
+                array('name' => 'StringTrim'),
+                array('name' => 'StripTags'),
+            ),
+        );
+    }
 }

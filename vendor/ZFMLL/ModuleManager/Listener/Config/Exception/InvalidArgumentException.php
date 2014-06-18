@@ -1,9 +1,13 @@
 <?php
 
-namespace ZFMLL\ModuleManager\Listener\Config\Exception;
+/*
+ * This file is part of the ZFMLL package.
+ * @copyright Copyright (c) 2012 Blanchon Vincent - France (http://developpeur-zend-framework.fr - blanchon.vincent@gmail.com)
+ */
 
-class InvalidArgumentException extends \InvalidArgumentException implements
-\Zend\ModuleManager\Listener\Exception
-{
+namespace ZFMLL\ModuleManager\Listener\Exception;
 
-}
+class InvalidArgumentException
+    extends \InvalidArgumentException
+    implements \Zend\ModuleManager\Listener\Exception
+{}

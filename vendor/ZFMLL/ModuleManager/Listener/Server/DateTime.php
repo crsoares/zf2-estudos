@@ -1,17 +1,27 @@
 <?php
 
+/*
+ * This file is part of the ZFMLL package.
+ * @copyright Copyright (c) 2012 Blanchon Vincent - France (http://developpeur-zend-framework.fr - blanchon.vincent@gmail.com)
+ */
+
 namespace ZFMLL\ModuleManager\Listener\Server;
 
-use ZFMLL\ModuleManger\Listener\AbstractListener;
+use ZFMLL\ModuleManager\Listener\AbstractListener;
 
 class DateTime extends AbstractListener
 {
-	public function authorizeModule($moduleName)
-	{
-		$date = date('Y-m-d H:i:s');
-		if ($date >= $this->config['start'] && $date <= $this->config['stop']) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * 
+     * @param string $moduleName
+     * @return boolean 
+     */
+    public function authorizeModule($moduleName)
+    {
+        $date = date('Y-m-d H:i:s');
+        if($date >= $this->config['start'] && $date <= $this->config['stop']) {
+            return true;
+        }
+        return false;
+    }
 }

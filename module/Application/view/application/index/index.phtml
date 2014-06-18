@@ -1,0 +1,45 @@
+<div class="row">
+    
+    <div class="span7">
+        <h2>Tutoriel Zend Framework 2 en français</h2><br />
+        <?php foreach($tutofr as $tutof) : ?>
+            <p>
+                <img class="thumbnail" src="/img/tutoriel/<?php echo $tutof->img; ?>" />
+                <blockquote>
+                    <a href="<?php echo $tutof->url; ?>" target="blank"><h3>» <?php echo $tutof->title; ?></h3></a>
+                    <i class="icon-tag"></i> <?php echo $this->tags($tutof->tags); ?>
+                    <br /><br />
+                    <?php echo $tutof->description; ?>
+                </blockquote>
+            </p>
+            <br />
+        <?php endforeach; ?>
+        <a class="btn" href="<?php echo $this->url('tutorielfr'); ?>">Voir tous les tutoriels français sur ZF2</a>
+        <br /><br /><br />
+        <h2>Tutoriel Zend Framework 2 en anglais</h2><br />
+        <?php foreach($tutoen as $tutoe) : ?>
+            <p>
+                <img class="thumbnail" src="/img/tutoriel/<?php echo $tutoe->img; ?>" />
+                <blockquote>
+                    <a href="<?php echo $tutoe->url; ?>" target="blank"><h3>» <?php echo $tutof->title; ?></h3></a>
+                    <i class="icon-tag"></i> <?php echo $this->tags($tutoe->tags); ?>
+                    <br /><br />
+                    <?php echo $tutoe->description; ?>
+                </blockquote>
+            </p>
+            <br />
+        <?php endforeach; ?>
+        <a class="btn" href="<?php echo $this->url('tutorielen'); ?>">Voir tous les tutoriels anglais sur ZF2</a>
+    </div>
+    
+    <div class="span5">
+        <h2>Tweet Zend Framework</h2><br />
+        <?php foreach($tweets as $tweet) : ?>
+            <p>
+                <?php echo $this->usertwitter($tweet->user); ?> : <?php echo $tweet->text; ?>
+            </p>
+        <?php endforeach; ?>
+        <a class="btn" href="<?php echo $this->url('tweet'); ?>">Voir tous les tweets sur ZF2</a>
+    </div>
+    
+</div>

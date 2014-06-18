@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="span12">
+        <p>Retrouvez ici la liste des tutoriels consacrés au Zend Framework 2 en français ou en anglais. N'hésitez pas à proposer le lien de votre tutoriel.</p>
+    </div>
+    <div class="span6">
+        <h2>Tutoriel Zend Framework 2 en français</h2>
+        <br />
+        <a class="btn" href="<?php echo $this->url('tutorielfr'); ?>">Voir tous les tutoriels français sur ZF2</a>
+        <br /><br />
+        <?php foreach($tutofr as $tutof) : ?>
+            <p>
+                <img class="thumbnail" src="/img/tutoriel/<?php echo $tutof->img; ?>" />
+                <blockquote>
+                    <a href="<?php echo $tutof->url; ?>" target="blank"><h3>» <?php echo $tutof->title; ?></h3></a>
+                    <i class="icon-tag"></i> <?php echo $this->tags($tutof->tags); ?>
+                    <br /><br />
+                    <?php echo htmlentities($tutof->description); ?>
+                </blockquote>
+            </p>
+            <br /><br />
+        <?php endforeach; ?>
+        <a class="btn" href="<?php echo $this->url('tutorielfr'); ?>">Voir tous les tutoriels français sur ZF2</a>
+    </div>
+    
+    <div class="span6">
+        <h2>Tutoriel Zend Framework 2 en anglais</h2>
+        <br />
+        <a class="btn" href="<?php echo $this->url('tutorielen'); ?>">Voir tous les tutoriels anglais sur ZF2</a>
+        <br /><br />
+        <?php foreach($tutoen as $tutoe) : ?>
+            <p>
+                <img class="thumbnail" src="/img/tutoriel/<?php echo $tutoe->img; ?>" />
+                <blockquote>
+                    <a href="<?php echo $tutoe->url; ?>" target="blank"><h3>» <?php echo $tutof->title; ?></h3></a>
+                    <i class="icon-tag"></i> <?php echo $this->tags($tutoe->tags); ?>
+                    <br /><br />
+                    <?php echo htmlentities($tutoe->description); ?>
+                </blockquote>
+            </p>
+            <br /><br />
+        <?php endforeach; ?>
+        <a class="btn" href="<?php echo $this->url('tutorielen'); ?>">Voir tous les tutoriels anglais sur ZF2</a>
+    </div>
+    
+</div>

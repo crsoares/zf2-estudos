@@ -1,0 +1,11 @@
+<div class="row">
+    <h2>Tweet sur le Zend Framework</h2><br />
+    <div class="span12">
+        <?php foreach($tweets as $tweet) : ?>
+            <p>
+                <?php echo $this->usertwitter($tweet->user); ?> : <?php echo $tweet->text; ?>
+            </p>
+        <?php endforeach; ?>
+        <?php echo $this->paginationControl($tweets, null, 'bloc/paginator', array('url' => $this->url())); ?>
+    </div>
+</div>

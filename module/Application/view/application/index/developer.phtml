@@ -1,0 +1,52 @@
+<div class="row">
+	<h2>Développeur Zend Framework</h2><br />
+    <div class="span12">
+    	<a class="btn" href="<?php echo $this->url('register-developer'); ?>">Ajoutez votre profil »</a>
+    	<br /><br />
+    	<table class="table table-striped">
+            <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Nom et prénom</th>
+                    <th>Certifications</th>
+                    <th>Réseau</th>
+                    </tr>
+            </thead>
+            <tbody>
+                    <?php foreach($developer as $k => $d) : ?>
+                    <tr>
+                    <td><?php echo $k+1; ?></td>
+                    <td><?php echo $d->name; ?></td>
+                    <td>
+                            <?php if($d->is_php_53_certified) : ?>
+                                <img style="width: 48px; height: 48px;" src="/img/icones/zce-php5-3-logo.gif" />
+                            <?php endif; ?>
+                            <?php if($d->is_php_zf1_certified) : ?>
+                                <img style="width: 48px; height: 48px;" src="/img/icones/zf-zce-logo.gif" />
+                            <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($d->viadeo) : ?>
+                            <a href="<?php echo $d->viadeo; ?>" target="_blank">
+                                <img style="width: 48px; height: 48px;" src="/img/icones/viadeo.png" />
+                            </a>
+                        <?php endif; ?>
+                        <?php if($d->linkedin) : ?>
+                            <a href="<?php echo $d->linkedin; ?>" target="_blank">
+                                <img style="width: 48px; height: 48px;" src="/img/icones/linkedin.png" />
+                            </a>
+                        <?php endif; ?>
+                        <?php if($d->twitter) : ?>
+                            <a href="<?php echo $d->twitter; ?>" target="_blank">
+                                <img style="width: 48px; height: 48px;" src="/img/icones/twitter.png" />
+                            </a>
+                        <?php endif; ?>
+                   </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+            </table>
+            <?php echo $this->paginationControl($developer, null, 'bloc/paginator', array('url' => $this->url())); ?>
+            <a class="btn" href="<?php echo $this->url('register-developer'); ?>">Ajoutez votre profil »</a>
+    </div>
+</div>

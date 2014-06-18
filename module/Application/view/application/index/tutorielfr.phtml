@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="span7">
+        <h2>Tutoriel Zend Framework 2 en français</h2><br />
+        <?php foreach($tutos as $tuto) : ?>
+            <p>
+                <img class="thumbnail" src="/img/tutoriel/<?php echo $tuto->img; ?>" />
+                <blockquote>
+                    <a href="<?php echo $tuto->url; ?>" target="blank"><h3>» <?php echo $tuto->title; ?></h3></a>
+                    <i class="icon-tag"></i> <?php echo $this->tags($tuto->tags); ?>
+                    <br /><br />
+                    <?php echo htmlentities($tuto->description); ?>
+                </blockquote>
+            </p>
+        <?php endforeach; ?>
+        <?php echo $this->paginationControl($tutos, null, 'bloc/paginator', array('url' => $this->url())); ?>
+    </div>
+    <?php echo $this->render('bloc/book'); ?>
+</div>
